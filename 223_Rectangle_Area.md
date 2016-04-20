@@ -28,7 +28,7 @@ var computeArea = function(A, B, C, D, E, F, G, H) {
 
 var erea = function(a, b, c, d) {
     return (c - a) * (d - b);
-}
+};
 var ereaLength = function(a, b, c, d) {
     if (a <= c && b >= d) {
         return d - c;
@@ -47,5 +47,5 @@ var ereaLength = function(a, b, c, d) {
             return d - a;
         }
     }
-}
+};
 ```
