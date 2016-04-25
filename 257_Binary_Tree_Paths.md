@@ -1,0 +1,58 @@
+# 257. Binary Tree Paths
+
+---
+
+## Description
+
+> Given a binary tree, return all root-to-leaf paths.
+
+> For example, given the following binary tree:
+```
+   1
+ /   \
+2     3
+ \
+  5
+```
+> All root-to-leaf paths are:
+
+> ["1->2->5", "1->3"]
+
+## Javascript
+
+```
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {string[]}
+ */
+var result;
+var binaryTreePaths = function(root) {
+    if (root === null) {
+        return [];
+    }
+    result = [];
+    treePath(root, '');
+    return result;
+};
+
+var treePath = function (root, path) {
+    path += root.val;
+    if (root.left === null && root.right === null) {
+        result.push(path);
+    }
+    if (root.left !== null) {
+        treePath(root.left, path + '->');
+    }
+
+    if (root.right !== null) {
+        treePath(root.right, path + '->');
+    }
+}
+```
