@@ -24,6 +24,10 @@ var countPrimes = function(n) {
 
     var rat;
     for (i = 2; i <= n; i++) {
+        // 已经为合数的直接跳过
+        if (result[i] === 0){
+            continue;
+        }
         rat = 2;
         while (i * rat <= n) {
             result[i * rat] = 0;
