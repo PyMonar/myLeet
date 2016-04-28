@@ -1,4 +1,4 @@
-# 204. Count Primes
+# 006. ZigZag Conversion
 
 ---
 
