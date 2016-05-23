@@ -1,0 +1,63 @@
+# 39. Combination Sum
+
+---
+
+## Description
+
+> Given a set of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
+
+> The same repeated number may be chosen from C unlimited number of times.
+
+> Note:
+> All numbers (including target) will be positive integers.
+> Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ≤ a2 ≤ … ≤ ak).
+> The solution set must not contain duplicate combinations.
+> For example, given candidate set 2,3,6,7 and target 7,
+> A solution set is:
+
+```
+[7]
+[2, 2, 3]
+```
+
+## Javascript
+
+```
+/**
+ * @param {number[]} candidates
+ * @param {number} target
+ * @return {number[][]}
+ */
+
+var results;
+var combinationSum = function(candidates, target) {
+
+    results = [];
+    candidates.sort(function (a, b) {return a - b});
+    solution(candidates, 0, target, []);
+
+    return results;
+
+};
+
+var solution = function (nums, i, target, items) {
+    if (target === 0) {
+        results.push(items);
+        return;
+    }
+
+    if (i === nums.length) {
+        return;
+    }
+
+    if (nums[i] > target) {
+        return;
+    }
+
+    solution(nums, i + 1, target, items.slice());
+
+    items.push(nums[i]);
+    solution(nums, i, target - nums[i], items.slice());
+
+};
+```
