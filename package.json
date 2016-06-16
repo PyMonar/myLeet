@@ -1,0 +1,19 @@
+{
+  "name": "leetcode-fetcher",
+  "version": "0.0.1",
+  "description": "generate leetcode problem decription",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "leetcode"
+  ],
+  "author": "Monar",
+  "license": "ISC",
+  "devDependencies": {
+    "cheerio": "^0.20.0",
+    "superagent": "^2.0.0"
+  },
+  "dependencies": {}
+}
