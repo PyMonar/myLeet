@@ -1,9 +1,5 @@
-var fs = require('fs');
+var solution = function () {
+    console.log('This is the solution.');
+};
 
-fs.readFile('problems.json', 'utf8', function(err, data) {
-    if (err) {
-        throw err;
-    }
-
-    console.log(data);
-});
+console.log(solution());
