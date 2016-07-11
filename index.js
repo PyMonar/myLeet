@@ -1,53 +1,55 @@
 /**
- * @param {character[][]} matrix
- * @return {number}
+ * @param {string} s
+ * @return {string}
  */
-var maximalSquare = function(matrix) {
-    if (matrix.length === 0) {
-        return 0;
+var longestPalindrome = function(s) {
+    s = '#' + s.split('').join('#') + '#';
+    var i, l = s.length;
+    var p = [];
+    for (i = 0; i < l; i++) {
+        p.push(0);
     }
 
-
-
-    var i, j;
-    var m = matrix.length;
-    var n = matrix[0].length;
-    var max = 0;
-    for (i = 0; i < m; i++) {
-        matrix[i] = matrix[i].split('');
-    }
-    
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < n; j++) {
-            matrix[i][j] -= 0;
-            if (matrix[i][j] === 0) {
-                continue;
+    var C = 0, R = 0;
+    var pre, after;
+    for (i = 1; i < l - 1; i++) {
+        if (i > R) {
+            C = i;
+            pre = i, after = i;
+            while(s[--pre] === s[++after] && after < l && pre >= 0) {
+                p[i]++;
             }
-
-            if (i !== 0 && j !== 0) {
-                helper(i, j, matrix);
-            }
-
-            max = max > matrix[i][j] ? max : matrix[i][j];
-        }
-    }
-
-    return max;
-};
-
-var helper = function(x, y, matrix) {
-    if (matrix[x - 1][y - 1] === 0) {
-        return;
-    }
-    var step = Math.sqrt(matrix[x - 1][y - 1]);
-    for (var i = 1; i <= step; i++) {
-        if ((matrix[x - i][y] && matrix[x][y - i])) {
-            var l = Math.sqrt(matrix[x][y]) + 1;
-            matrix[x][y] = l * l;
+            R = i + p[i];
         } else {
-            return;
+            // 两种情况
+            var i_mirror = C - (i - C);
+            var mirrorValue = p[i_mirror];
+            // 镜像在范围内
+            if (mirrorValue < R - i) {
+                p[i] = mirrorValue;
+            } else { // 镜像超出范围
+                C = i;
+                p[i] = R - i;
+                after = R, pre = i - (R - i);
+                while(s[--pre] === s[++after] && after < l && pre >= 0) {
+                    p[i]++;
+                }
+                R = i + p[i];
+            }
         }
     }
+    console.log(p);
+    var max = 1, index;
+    for (i = 0; i < l; i++) {
+        if (p[i] >= max) {
+            index = i;
+            max = p[i];
+        }
+    }
+    console.log(index);
+
+    return s.slice(index - p[index], index + p[index]).split('#').join('');
 };
 
-console.log(maximalSquare(["0001","1101","1111","0111","0111"]));
+
+console.log(longestPalindrome('aba'));
