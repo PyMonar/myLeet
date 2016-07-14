@@ -8,5 +8,5 @@
 
 ## Javascript
 
-```
+```javascript
 ```
