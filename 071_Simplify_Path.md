@@ -1,3 +1,21 @@
+# 71. Simplify Path
+
+---
+
+## Description
+
+> Given an absolute path for a file (Unix-style), simplify it.
+
+> For example,
+
+> path = "/home/", => "/home"
+
+> path = "/a/./b/../../c/", => "/c"
+
+
+## Javascript
+
+```javascript
 /**
  * @param {string} path
  * @return {string}
@@ -29,5 +47,4 @@ var simplifyPath = function(path) {
 
     return stack.join('');
 };
-
-console.log(simplifyPath('///a/../c/d/c'));
+```
