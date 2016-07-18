@@ -1,3 +1,29 @@
+# 307. Range Sum Query - Mutable
+
+---
+
+## Description
+
+> Given an integer array nums, find the sum of the elements between indices i and j (i &#x2264; j), inclusive.
+
+> Example:
+
+```
+Given nums = [1, 3, 5]
+
+sumRange(0, 2) -> 9
+update(1, 2)
+sumRange(0, 2) -> 8
+```
+
+> Note:
+
+> 1. The array is only modifiable by the update function.
+> 2. You may assume the number of calls to update and sumRange function is distributed evenly.
+
+## Javascript
+
+```javascript
 /**
  * @constructor
  * @param {number[]} nums
@@ -46,8 +72,4 @@ NumArray.prototype.sumRange = function(i, j) {
  * numArray.update(1, 10);
  * numArray.sumRange(0, 2);
  */
-var nums = [1,3,5];
-var numArray = new NumArray(nums);
-console.log(numArray.sumRange(0, 2));
-console.log(numArray.update(1, 2));
-console.log(numArray.sumRange(0, 2));
+```
