@@ -1,3 +1,37 @@
+# 130. Surrounded Regions
+
+---
+
+## Description
+
+> Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
+
+> A region is captured by flipping all 'O's into 'X's in that surrounded region.
+
+> For example,
+
+```
+X X X X
+X O O X
+X X O X
+X O X X
+
+```
+> After running your function, the board should be:
+
+```
+X X X X
+X X X X
+X X X X
+X O X X
+
+```
+
+
+
+## Javascript
+
+```javascript
 /**
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
@@ -29,11 +63,11 @@ var solve = function(board) {
 
 var bfs = function (board, visited, i, j) {
     var q = [], flag = false, index = 0;
-    var m = board.length, n = board[0].length;
+    var m = board.length, n = board[0].length, item;
     q.push([i, j]);
     visited[i][j] = true;
     while (index < q.length) {
-        var item = q[index];
+        item = q[index];
         var x = item[0], y = item[1];
 
         if (x === 0 || x === m - 1 || y === 0 || y === n - 1) {
@@ -65,17 +99,9 @@ var bfs = function (board, visited, i, j) {
     if (!flag) {
         // 翻转所有队列里边的'O'
         while (q.length !== 0) {
-            var item = q.pop();
+            item = q.pop();
             board[item[0]][item[1]] = 'X';
         }
     } 
 };
-
-var test = [
-    ['X', 'X', 'X', 'X'],
-    ['X', 'O', 'O', 'X'],
-    ['X', 'X', 'O', 'X'],
-    ['X', 'O', 'O', 'X']
-];
-
-console.log(solve(test));
+```
