@@ -1,81 +1,90 @@
 /**
- * @param {character[][]} board
- * @return {void} Do not return anything, modify board in-place instead.
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(board) {
-    if (board.length === 0) {
+var result;
+var totalNQueens = function(n) {
+    if (n === 0) {
+        return 0;
+    }
+    result = 0;
+
+    var matrix = [];
+    var i, j;
+    for (i = 0; i < n; i++) {
+        var item = [];
+        for (j = 0; j < n; j++) {
+            item.push(true);
+        }
+        matrix.push(item);
+    }
+
+    solution(matrix, 0);
+
+    return result;
+
+};
+
+var solution = function (matrix, row) {
+    if (row === matrix.length) {
+        result ++;
+        log(matrix);
         return;
     }
 
-    var m = board.length, n = board[0].length, i, j;
-    
-    var visited = [];
-    for (i = 0; i < m; i++) {
-        var row = [];
-        for (j = 0; j < n; j++) {
-            row.push(false);
-        }
-        visited.push(row);
-    }
-
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < n; j++) {
-            if (board[i][j] === 'O' && !visited[i][j]) {
-                bfs(board, visited, i, j);
+    if (canPut(matrix[row])) {
+        for (var i = 0; i < matrix.length; i++) {
+            if (matrix[row][i]) {
+                var temp = copy(matrix);
+                set(temp, row, i);
+                solution(temp, row + 1);
+                
             }
         }
     }
 };
 
-var bfs = function (board, visited, i, j) {
-    var q = [], flag = false, index = 0;
-    var m = board.length, n = board[0].length;
-    q.push([i, j]);
-    visited[i][j] = true;
-    while (index < q.length) {
-        var item = q[index];
-        var x = item[0], y = item[1];
+var set = function (matrix, row, col) {
+    var i, j;
+    var left = col, right = col;
+    for (i = row + 1; i < matrix.length; i ++) {
+        matrix[i][col] = false;
 
-        if (x === 0 || x === m - 1 || y === 0 || y === n - 1) {
-            flag = true;
+        left--;
+        right++;
+        if (left >= 0) {
+            matrix[i][left] = false;
         }
-        // 上
-        if (x - 1 >= 0 && !visited[x - 1][y] && board[x - 1][y] === 'O') {
-            q.push([x - 1, y]);
-            visited[x - 1][y] = true;
+
+        if (right < matrix.length) {
+            matrix[i][right] = false;
         }
-        // 下
-        if (x + 1 < m && !visited[x + 1][y] && board[x + 1][y] === 'O') {
-            q.push([x + 1, y]);
-            visited[x + 1][y] = true;
-        }
-        // 左
-        if (y - 1 >= 0 && !visited[x][y - 1] && board[x][y - 1] === 'O') {
-            q.push([x, y - 1]);
-            visited[x][y - 1] = true;
-        }
-        // 右
-        if (y + 1 < n && !visited[x][y + 1] && board[x][y + 1] === 'O') {
-            q.push([x, y + 1]);
-            visited[x][y + 1] = true;
-        }
-        index++;
     }
-
-    if (!flag) {
-        // 翻转所有队列里边的'O'
-        while (q.length !== 0) {
-            var item = q.pop();
-            board[item[0]][item[1]] = 'X';
-        }
-    } 
+    
 };
 
-var test = [
-    ['X', 'X', 'X', 'X'],
-    ['X', 'O', 'O', 'X'],
-    ['X', 'X', 'O', 'X'],
-    ['X', 'O', 'O', 'X']
-];
+var copy = function (matrix) {
+    var i, j;
+    var result = [];
+    for (i = 0; i < matrix.length; i++) {
+        result.push(matrix[i].slice());
+    }
+    return result;
+};
 
-console.log(solve(test));
+var canPut = function (row) {
+    return row.indexOf(true) !== -1;
+};
+
+
+var log = function(matrix) {
+    for (var i = 0; i < matrix.length; i++) {
+        var item = '';
+        for (var j = 0; j < matrix.length; j++) {
+            item += matrix[i] ? '1 ' : '0 ';
+        }
+        console.log(item);
+    }
+}
+
+console.log(totalNQueens(5));
