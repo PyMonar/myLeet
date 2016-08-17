@@ -31,7 +31,7 @@
 ## Javascript
 
 
-```
+```javascript
 /**
  * @param {character[][]} grid
  * @return {number}
@@ -73,4 +73,103 @@ var dfs = function (grid, i, j, m, n) {
         dfs(grid, i, j + 1, m, n);
     }
 };
+```
+
+## Java
+
+```java
+
+public class Solution {
+    public int numIslands(char[][] grid) {
+        if (grid.length == 0) {
+            return 0;
+        }
+        int m = grid.length;
+        int n = grid[0].length;
+        int p, q;
+        QuickUnionFind uf = new QuickUnionFind(grid);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1') {
+                    p = getIndex(i, j, n);
+                    if (i - 1 >= 0 && grid[i - 1][j] == '1') {
+                        q = getIndex(i - 1, j, n);
+                        uf.union(p, q);
+                    }
+
+                    if (i + 1 < m && grid[i + 1][j] == '1') {
+                        q = getIndex(i + 1, j, n);
+                        uf.union(p, q);
+                    }
+
+                    if (j - 1 >= 0 && grid[i][j - 1] == '1') {
+                        q = getIndex(i, j - 1, n);
+                        uf.union(p, q);
+                    }
+
+                    if (j + 1 < n && grid[i][j + 1] == '1') {
+                        q = getIndex(i, j + 1, n);
+                        uf.union(p, q);
+                    }
+                }
+            }
+        }
+        return uf.count(); 
+    }
+
+    public int getIndex(int i, int j, int n) {
+        return i * n + j;
+    }
+
+    public class QuickUnionFind {
+        
+        private int[] id;
+        private int count;
+        
+        public QuickUnionFind(char[][] grid) {
+            int m = grid.length;
+            int n = grid[0].length;
+            
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (grid[i][j] == '1') {
+                        count++;
+                    }
+                }
+            }
+            
+            id = new int[m * n];
+            for (int i = 0; i < m * n; i++) {
+                id[i] = i;
+            }
+        }
+        
+        public int count() {
+            return count;
+        }
+        
+        public int find(int p) {
+            while (p != id[p]) {
+                p = id[p];
+            }
+            return p;
+        }
+        
+        public void union (int p, int q) {
+            int pRoot = find(p);
+            int qRoot = find(q);
+            
+            if (pRoot == qRoot) {
+                return;
+            }
+            
+            id[pRoot] = qRoot;
+            count--;
+        }
+        
+        public boolean connected (int p, int q) {
+            return find(p) == find(q);
+        }
+    }
+}
 ```
