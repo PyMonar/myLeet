@@ -1,3 +1,35 @@
+# 51. N-Queens
+
+---
+
+## Description
+
+> The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
+
+> Given an integer n, return all distinct solutions to the n-queens puzzle.
+
+> Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space respectively.
+
+> For example, There exist two distinct solutions to the 4-queens puzzle:
+
+```
+[
+ [".Q..",  // Solution 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // Solution 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]
+```
+
+
+## Javascript
+
+```javascript
 /**
  * @param {number} n
  * @return {string[][]}
@@ -29,7 +61,6 @@ var solveNQueens = function(n) {
 
 var solution = function (matrix, row) {
     if (row === matrix.length) {
-        // get a solution
         getSolution(matrix.length);
         return;
     }
@@ -44,6 +75,7 @@ var solution = function (matrix, row) {
             points.push([row, i]);
             // set matrix and stack
             var point_num = setMatrix(matrix, row, i);
+            
             solution(matrix, row + 1);
             
             // remove points
@@ -121,6 +153,4 @@ var hasPlace = function (matrix, row) {
     }
     return false;
 };
-
-
-console.log(solveNQueens(5));
+```
