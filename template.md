@@ -6,7 +6,7 @@
 
 {desc}
 
-## Javascript
+## Java
 
-```javascript
+```java
 ```
