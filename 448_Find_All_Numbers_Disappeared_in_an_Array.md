@@ -48,7 +48,7 @@ public class Solution {
 				result.add(i);
 			}
 		}
-        return result;
+		return result;
 	}
 }
 ```
@@ -66,7 +66,7 @@ public class Solution {
 		for (int i = 0; i < nums.length; i++) {
 			copy[i] = i + 1;
 		}
-	
+
 		for (int i = 0; i < nums.length; i++) {
 			copy[nums[i] - 1] = -1;
 		}
@@ -77,12 +77,13 @@ public class Solution {
 				result.add(copy[i]);
 			}
 		}
-        return result;
+		return result;
 	}
 }
 ```
 
 前两种解法速度慢，而且开辟新的空间了，虽然比较好理解，但是速度不快，建议使用第三种方法，比较巧。我特么为什么想不出来T.T
+
 解法三：绝对值法
 
 ```java
