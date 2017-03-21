@@ -40,9 +40,6 @@ public int addDigits(int num) {
 
 ```java
 public int addDigits(int num) {
-    if (num <= 9) {
-        return num;
-    }
     int result = num, tmp, nums;
     while (result > 9) {
         nums = result;
