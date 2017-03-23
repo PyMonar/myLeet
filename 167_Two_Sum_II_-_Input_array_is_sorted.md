@@ -45,3 +45,28 @@ class Solution(object):
                 i = mid + 1
         return -1
 ```
+
+## Java
+
+```java
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+		int[] result = new int[2];
+		int left = 0, right = numbers.length - 1;
+		int tar;
+		while (left < right) {
+			tar = numbers[left] + numbers[right];
+			if (tar == target) {
+				result[0] = left + 1;
+				result[1] = right + 1;
+				break;
+			} else if (tar > target) {
+				right--;
+			} else {
+				left++;
+			}
+		}
+		return result;
+    }
+}
+```
