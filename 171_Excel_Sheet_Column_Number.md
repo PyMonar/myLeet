@@ -24,14 +24,14 @@ AB -> 28
 ```java
 public class Solution {
     public int titleToNumber(String s) {
-		int r = s.length() - 1;
-		int result = 0;
-		for (int i = 0; i <= r; i++) {
-			result = result * 26 + (s.charAt(i) - 'A' + 1); 
+        int r = s.length() - 1;
+        int result = 0;
+        for (int i = 0; i <= r; i++) {
+            result = result * 26 + (s.charAt(i) - 'A' + 1);
             // OR
             // result += Math.pow(26, r - i) * (s.charAt(i) - 'A' + 1);
-		}
-		return result;
+        }
+        return result;
     }
 }
 ```
