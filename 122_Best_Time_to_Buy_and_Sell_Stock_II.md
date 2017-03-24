@@ -10,7 +10,7 @@
 
 ## Javascript
 
-```
+```javascript
 /**
  * @param {number[]} prices
  * @return {number}
@@ -47,4 +47,26 @@ var maxProfit = function(prices) {
 
      return max;
 };
+```
+
+## Java
+
+解法：其实就是求一条曲线的递增区间落差值的和。
+
+```java
+public class Solution {
+    public int maxProfit(int[] prices) {
+		if (prices == null || prices.length == 0) {
+			return 0;
+		}
+		
+		int profit = 0;
+		for (int i = 1; i < prices.length; i++) {
+			if (prices[i] >= prices[i - 1]) {
+				profit += prices[i] - prices[i - 1];
+			}
+		}
+        return profit;
+    }
+}
 ```
