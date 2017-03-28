@@ -33,7 +33,6 @@ var romanToInt = function(s) {
         result += current;
         i++;
     }
-    
     return result;
 };
 
@@ -64,7 +63,7 @@ var toNumber = function (i) {
 解法二：
 
 ```
-用作数字的罗马字母共有七个，即Ⅰ(1),Ⅴ(5),Ⅹ(10),L(50),C(100),D(500),M(1000).
+用作数字的罗马字母共有七个，即I(1),V(5),X(10),L(50),C(100),D(500),M(1000).
 
 罗马字母记数有以下四条规则：
 
