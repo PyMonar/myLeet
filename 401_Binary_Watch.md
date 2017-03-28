@@ -29,7 +29,7 @@ The minute must be consist of two digits and may contain a leading zero, for exa
 
 ## Java
 
-思路：回溯法。
+解法一：回溯法。
 
 ```java
 import java.util.ArrayList;
@@ -86,5 +86,21 @@ public class Solution {
         }
         return "";
     }
+}
+```
+
+解法二：直接枚举。
+
+```java
+public List<String> readBinaryWatch(int num) {
+    ArrayList<String> result = new ArrayList<>();
+    for (int i = 0; i < 12; i++) {
+        for (int j = 0; j < 60; j++) {
+            if (Integer.bitCount(i) + Integer.bitCount(j) == num) {
+                result.add(String.format("%d:%02d", i, j));
+            }
+        }
+    }
+    return result;
 }
 ```
