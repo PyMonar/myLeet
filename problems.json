@@ -1,5 +1,4 @@
-[
-    {
+[{
         "num": 1,
         "title": "Two Sum",
         "url": "https://leetcode.com/problems/two-sum/"
@@ -2370,6 +2369,11 @@
         "url": "https://leetcode.com/problems/relative-ranks/"
     },
     {
+        "num": 507,
+        "title": "Perfect Number",
+        "url": "https://leetcode.com/problems/perfect-number/"
+    },
+    {
         "num": 508,
         "title": "Most Frequent Subtree Sum",
         "url": "https://leetcode.com/problems/most-frequent-subtree-sum/"
@@ -2465,8 +2469,43 @@
         "url": "https://leetcode.com/problems/construct-binary-tree-from-string/"
     },
     {
+        "num": 537,
+        "title": "Complex Number Multiplication",
+        "url": "https://leetcode.com/problems/complex-number-multiplication/"
+    },
+    {
+        "num": 538,
+        "title": "Convert BST to Greater Tree",
+        "url": "https://leetcode.com/problems/convert-bst-to-greater-tree/"
+    },
+    {
         "num": 539,
         "title": "Minimum Time Difference",
         "url": "https://leetcode.com/problems/minimum-time-difference/"
+    },
+    {
+        "num": 541,
+        "title": "Reverse String II",
+        "url": "https://leetcode.com/problems/reverse-string-ii/"
+    },
+    {
+        "num": 542,
+        "title": "01 Matrix",
+        "url": "https://leetcode.com/problems/01-matrix/"
+    },
+    {
+        "num": 543,
+        "title": "Diameter of Binary Tree",
+        "url": "https://leetcode.com/problems/diameter-of-binary-tree/"
+    },
+    {
+        "num": 544,
+        "title": "Output Contest Matches",
+        "url": "https://leetcode.com/problems/output-contest-matches/"
+    },
+    {
+        "num": 545,
+        "title": "Boundary of Binary Tree",
+        "url": "https://leetcode.com/problems/boundary-of-binary-tree/"
     }
 ]
