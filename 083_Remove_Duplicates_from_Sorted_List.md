@@ -12,9 +12,9 @@
 
 ## Javascript
 
-> Ë¼Â·£ºÁ½¸öÖ¸Õë£¬Ò»¸öÖ¸Ïòµ±Ç°ÔªËØ£¬Ò»¸öÖ¸ÏòÇ°Ò»¸öÔªËØ£¬Èç¹ûºÍÇ°Ò»¸öÔªËØÖØ¸´ÁË£¬ÔòÍ¨¹ıÖ¸Õë²Ù×÷É¾³ıµ±Ç°ÔªËØ¡£
+> æ€è·¯ï¼šä¸¤ä¸ªæŒ‡é’ˆï¼Œä¸€ä¸ªæŒ‡å‘å½“å‰å…ƒç´ ï¼Œä¸€ä¸ªæŒ‡å‘å‰ä¸€ä¸ªå…ƒç´ ï¼Œå¦‚æœå’Œå‰ä¸€ä¸ªå…ƒç´ é‡å¤äº†ï¼Œåˆ™é€šè¿‡æŒ‡é’ˆæ“ä½œåˆ é™¤å½“å‰å…ƒç´ ã€‚
 
-```
+```javascript
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -43,4 +43,32 @@ var deleteDuplicates = function(head) {
     }
     return head;
 };
+```
+
+## Java
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode cur = head, next;
+        while (cur != null) {
+            next = cur.next;
+            while (next != null && next.val == cur.val) {
+                next = next.next;
+            }
+            cur.next = next;
+            cur = next;
+        }
+        return head;
+    }
+}
 ```
