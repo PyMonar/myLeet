@@ -12,7 +12,7 @@
 
 > 思路：可以两层循环暴力法，不过时间超限。这里使用两根指针，一个买一个卖来跟踪，当买的更小时买指针更新，当卖的更大时卖指针和利润更新，卖指针永远大于买指针，这样扫描一遍表即可。
 
-```
+```javascript
 /**
  * @param {number[]} prices
  * @return {number}
@@ -21,8 +21,7 @@ var maxProfit = function(prices) {
     var max = 0;
     var l = prices.length;
     var buy = prices[0],
-        sell = prices[0],
-        prof;
+        sell = prices[0];
     for (var i = 0; i < l; i++) {
         if (prices[i] <= buy) {
             buy = prices[i];
@@ -36,4 +35,21 @@ var maxProfit = function(prices) {
     }
     return max;
 };
+```
+
+## Java
+
+```java
+public class Solution {
+    public int maxProfit(int[] prices) {
+        if (prices == null || prices.length == 0) return 0;
+        int buy = prices[0], sell = prices[0], res = 0;
+        for (int i = 1; i < prices.length; i++) {
+            sell = prices[i];
+            buy = prices[i] < buy ? prices[i] : buy;
+            res = sell - buy > res ? sell - buy : res;
+        }
+        return res;
+    }
+}
 ```
