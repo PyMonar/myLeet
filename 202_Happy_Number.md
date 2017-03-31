@@ -11,9 +11,9 @@
 
 ## Javascript
 
-> Ë¼Â·£ºÉæ¼°µ½ÎŞÏŞÑ­»·µÄÎÊÌâ£¬ÍÆ¼öÊ¹ÓÃhash±í£¬½«Ñ­»·Ö®ºóµÄºÍ´æÈëhash£¬Èç¹ûÔÙ´Î³öÏÖµÄ»°ËµÃ÷ÎŞÏŞÑ­»·ÁË¡£
+> æ€è·¯ï¼šæ¶‰åŠåˆ°æ— é™å¾ªç¯çš„é—®é¢˜ï¼Œæ¨èä½¿ç”¨hashè¡¨ï¼Œå°†å¾ªç¯ä¹‹åçš„å’Œå­˜å…¥hashï¼Œå¦‚æœå†æ¬¡å‡ºç°çš„è¯è¯´æ˜æ— é™å¾ªç¯äº†ã€‚
 
-```
+```javascript
 /**
  * @param {number} n
  * @return {boolean}
@@ -42,5 +42,30 @@ var calculate = function (n) {
 		n = (n - cur) / 10;
 	} 
 	return result;
+}
+```
+
+## Java
+
+```java
+public class Solution {
+    public boolean isHappy(int n) {
+        HashMap<Integer, Integer> dic = new HashMap<Integer, Integer>();
+        int cur;
+        while (n != 1) {
+            cur = 0;
+            while (n != 0) {
+                cur += (n % 10) * (n % 10);
+                n /= 10;
+            }
+            if (dic.containsKey(cur)) {
+                return false;
+            } else {
+                dic.put(cur, 1);
+            }
+            n = cur;
+        }
+        return true;
+    }
 }
 ```
