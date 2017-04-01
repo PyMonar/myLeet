@@ -8,7 +8,7 @@
 
 > For example:
 Given binary tree {3,9,20,#,#,15,7},
->
+
 ```
     3
    / \
@@ -16,8 +16,9 @@ Given binary tree {3,9,20,#,#,15,7},
     /  \
    15   7
 ```
+
 > return its bottom-up level order traversal as:
->
+
 ```
 [
   [15,7],
@@ -31,7 +32,7 @@ Given binary tree {3,9,20,#,#,15,7},
 
 > 思路：核心是利用队列，将同一层树节点放入队列，并处理父节点的输出，循环往复直至队列为空即可。另外，注意队列操作的时候循环下表的问题。PS：叮嘱我，跌倒不应放弃。
 
-```
+```javascript
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -74,7 +75,40 @@ var levelOrderBottom = function(root) {
     return results;
 
 };
+```
 
+## Java
 
-
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if (root == null) return res;
+        LinkedList<TreeNode> q = new LinkedList<TreeNode>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            ArrayList<Integer> line = new ArrayList<Integer>();
+            int count = q.size();
+            TreeNode cur;
+            while (count > 0) {
+                cur = q.poll();
+                line.add(cur.val);
+                if (cur.left != null) q.add(cur.left);
+                if (cur.right != null) q.add(cur.right);
+                count--;
+            }
+            res.add(0, line);
+        }
+        return res;
+    }
+}
 ```
