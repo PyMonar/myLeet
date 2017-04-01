@@ -16,7 +16,9 @@
 
 ## Javascript
 
-```
+解法一：直接查找，O(n)。
+
+```javascript
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -26,14 +28,35 @@ var searchInsert = function(nums, target) {
     if (nums.indexOf(target) !== -1) {
         return nums.indexOf(target);
     }
-
     var i;
     for (i = 0; i < nums.length; i++) {
         if (nums[i] > target) {
             return i;
         }
     }
-
     return nums.length;
 };
+```
+
+## Java
+
+解法二：二分查找，O(logn)。
+
+```java
+public class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int mid, i = 0, j = nums.length - 1;
+        while (i <= j) {
+            mid = (i + j) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] > target) {
+                j = mid - 1;
+            } else {
+                i = mid + 1;
+            }
+        }
+        return i;
+    }
+}
 ```
