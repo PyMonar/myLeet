@@ -12,9 +12,9 @@
 
 ## Javascript
 
-> Ë¼Â·£º½«Êı×Ö·Ö±ğ%ÔËËã2¡¢3»ò5£¬Èç¹û½á¹ûÎª0ÔòÏà³ıºó¼ÌĞøÕâÑù²Ù×÷£¬Ö±µ½¶¼ÎŞ·¨Îª0£¬ÕâÊ±Èç¹û½á¹ûÎª1ÔòÎªugly number£¬·ñÔò²»ÊÇ¡£
+> æ€è·¯ï¼šå°†æ•°å­—åˆ†åˆ«%è¿ç®—2ã€3æˆ–5ï¼Œå¦‚æœç»“æœä¸º0åˆ™ç›¸é™¤åç»§ç»­è¿™æ ·æ“ä½œï¼Œç›´åˆ°éƒ½æ— æ³•ä¸º0ï¼Œè¿™æ—¶å¦‚æœç»“æœä¸º1åˆ™ä¸ºugly numberï¼Œå¦åˆ™ä¸æ˜¯ã€‚
 
-```
+```javascript
 /**
  * @param {number} num
  * @return {boolean}
@@ -40,4 +40,21 @@ var isUgly = function(num) {
     }
     return flag;
 };
+```
+
+## Java
+
+è§£æ³•äºŒï¼šé€’å½’ã€‚
+
+```java
+public class Solution {
+    public boolean isUgly(int num) {
+        if (num <= 0) return false;
+        if (num == 1 || num == 2 || num == 3 || num == 5) return true;
+        if (num % 2 == 0) return isUgly(num / 2);
+        if (num % 3 == 0) return isUgly(num / 3);
+        if (num % 5 == 0) return isUgly(num / 5);
+        return false;
+    }
+}
 ```
