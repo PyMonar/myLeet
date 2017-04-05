@@ -12,7 +12,7 @@
 
 > 思路：动态规划。设置一个数组money存放偷到某一家的时候已经偷得的最大钱数，然后不能偷相邻两家的，列出状态转移方程即可。
 
-```
+```javascript
 /**
  * @param {number[]} nums
  * @return {number}
@@ -44,4 +44,42 @@ var rob = function(nums) {
 
     return max;
 };
+```
+
+## Java
+
+解法一：
+
+```java
+public class Solution {
+    public int rob(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int res = 0;
+        int[] dp = new int[nums.length];
+        for (int i = 0; i < dp.length; i++) {
+            dp[i] = nums[i];
+            res = res > dp[i] ? res : dp[i];
+            for (int j = 0; j < i - 1; j++) {
+                dp[i] = nums[i] + dp[j] > dp[i] ? nums[i] + dp[j] : dp[i];
+                res = res > dp[i] ? res : dp[i];
+            }
+        }
+        return res;
+    }
+}
+```
+
+解法二：
+
+```java
+public int rob(int[] num) {
+    int rob = 0; //max monney can get if rob current house
+    int notrob = 0; //max money can get if not rob current house
+    for(int i=0; i<num.length; i++) {
+        int currob = notrob + num[i]; //if rob current value, previous house must not be robbed
+        notrob = Math.max(notrob, rob); //if not rob ith house, take the max value of robbed (i-1)th house and not rob (i-1)th house
+        rob = currob;
+    }
+    return Math.max(rob, notrob);
+}
 ```
