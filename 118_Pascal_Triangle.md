@@ -6,8 +6,10 @@
 
 > Given numRows, generate the first numRows of Pascal's triangle.
 
-> For example, given numRows = 5,
-> Return
+For example, given numRows = 5,
+
+Return
+
 ```
 [
      [1],
@@ -20,8 +22,7 @@
 
 ## Javascript
 
-
-```
+```javascript
 /**
  * @param {number} numRows
  * @return {number[][]}
@@ -42,4 +43,28 @@ var generate = function(numRows) {
     }
     return outer;
 };
+```
+
+## Java
+
+```java
+public class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if (numRows == 0) return res;
+        List<Integer> row = new ArrayList<Integer>();
+        row.add(1);
+        res.add(row);
+        for (int i = 1; i < numRows; i++) {
+            row = new ArrayList<Integer>();
+            for (int j = 0; j <= i; j++) {
+                if (j == 0) row.add(res.get(i - 1).get(0));
+                else if (j == i) row.add(res.get(i - 1).get(i - 1));
+                else row.add(res.get(i - 1).get(j) + res.get(i - 1).get(j - 1));
+            }
+            res.add(row);
+        }
+        return res;
+    }
+}
 ```
