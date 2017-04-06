@@ -14,11 +14,12 @@
 > Given input array nums = [3,2,2,3], val = 3
 
 > Your function should return length = 2, with the first two elements of nums being 2.
+
 ## Javascript
 
 > 思路：splice库函数解决数组自身切割问题。
 
-```
+```javascript
 /**
  * @param {number[]} nums
  * @param {number} val
@@ -34,4 +35,47 @@ var removeElement = function(nums, val) {
     }
     return nums.length;
 };
+```
+
+## Java
+
+解法一：双指针。
+
+```java
+public class Solution {
+    public int removeElement(int[] nums, int val) {
+        int i = 0, j = nums.length - 1, cnt = 0;
+        while (i < j) {
+            while (nums[i] != val && i < j) {
+                i++;
+            }
+            int tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
+            j--;
+        }
+        j = nums.length - 1;
+        while (j >= 0 && nums[j] == val) {
+            cnt++;
+            j--;
+        }
+        return nums.length - cnt;
+    }
+}
+```
+
+解法二：单指针覆盖法。
+
+```java
+public class Solution {
+    int removeElement(int A[], int elem) {
+        int begin = 0;
+        for(int i = 0;i < A.length; i++) {
+            if(A[i] != elem) {
+                A[begin++] = A[i];
+            }
+        }
+        return begin;
+    }
+}
 ```
