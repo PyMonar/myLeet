@@ -15,7 +15,7 @@
 ## Javascript
 
 
-```
+```javascript
 /**
  * @param {string} s
  * @return {string}
@@ -53,5 +53,35 @@ var isVowels = function (s) {
     var vowels = ['a', 'e', 'i', 'o', 'u'];
     s = s.toLowerCase();
     return vowels.indexOf(s) !== -1;
+};
+```
+
+## Java
+
+```java
+public class Solution {
+    public String reverseVowels(String s) {
+        char[] arr = s.toCharArray();
+        int i = 0, j = s.length() - 1;
+        while (i < j) {
+            while (!isVowels(arr[i]) && i < j) {
+                i++;
+            }
+            while (!isVowels(arr[j]) && i < j) {
+                j--;
+            }
+            if (i >= j) break;
+            char tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+            i++;
+            j--;
+        }
+        return String.valueOf(arr);
+    }
+    
+    public boolean isVowels(char ch) {
+        return ch == 'a' || ch == 'A' || ch == 'e' || ch == 'E' || ch == 'i' || ch == 'I' || ch == 'o' || ch == 'O' || ch == 'u' || ch == 'U';
+    }
 }
 ```
