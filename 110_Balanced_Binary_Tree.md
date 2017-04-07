@@ -12,7 +12,7 @@
 
 > 思路：递归解法。递归计算树的深度，设置全局变量标记位，进行左右子树深度的比较，一旦发现不平衡就改变状态。PS：函数开头注意重置标记位。
 
-```
+```javascript
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -56,5 +56,33 @@ var treeHeight = function (root) {
          }
          return 1 + ( l > r ? l : r);   
      }
+}
+```
+
+## Java
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) return true;
+        int diff = getHeight(root.left) - getHeight(root.right);
+        return (diff <= 1 && diff >= -1) && isBalanced(root.left) && isBalanced(root.right);
+    }
+    
+    public int getHeight(TreeNode root) {
+        if (root == null) return 0;
+        int lh = getHeight(root.left);
+        int rh = getHeight(root.right);
+        return lh > rh ? lh + 1 : rh + 1;
+    }
 }
 ```
