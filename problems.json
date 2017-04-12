@@ -1,4 +1,5 @@
-[{
+[
+    {
         "num": 1,
         "title": "Two Sum",
         "url": "https://leetcode.com/problems/two-sum/"
@@ -2409,6 +2410,16 @@
         "url": "https://leetcode.com/problems/detect-capital/"
     },
     {
+        "num": 521,
+        "title": "Longest Uncommon Subsequence I",
+        "url": "https://leetcode.com/problems/longest-uncommon-subsequence-i/"
+    },
+    {
+        "num": 522,
+        "title": "Longest Uncommon Subsequence II",
+        "url": "https://leetcode.com/problems/longest-uncommon-subsequence-ii/"
+    },
+    {
         "num": 523,
         "title": "Continuous Subarray Sum",
         "url": "https://leetcode.com/problems/continuous-subarray-sum/"
@@ -2507,5 +2518,35 @@
         "num": 545,
         "title": "Boundary of Binary Tree",
         "url": "https://leetcode.com/problems/boundary-of-binary-tree/"
+    },
+    {
+        "num": 546,
+        "title": "Remove Boxes",
+        "url": "https://leetcode.com/problems/remove-boxes/"
+    },
+    {
+        "num": 547,
+        "title": "Friend Circles",
+        "url": "https://leetcode.com/problems/friend-circles/"
+    },
+    {
+        "num": 548,
+        "title": "Split Array with Equal Sum",
+        "url": "https://leetcode.com/problems/split-array-with-equal-sum/"
+    },
+    {
+        "num": 549,
+        "title": "Binary Tree Longest Consecutive Sequence II",
+        "url": "https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/"
+    },
+    {
+        "num": 554,
+        "title": "Brick Wall",
+        "url": "https://leetcode.com/problems/brick-wall/"
+    },
+    {
+        "num": 556,
+        "title": "Next Greater Element III",
+        "url": "https://leetcode.com/problems/next-greater-element-iii/"
     }
 ]
