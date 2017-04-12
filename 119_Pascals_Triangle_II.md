@@ -11,7 +11,7 @@
 
 ## Javascript
 
-```
+```javascript
 /**
  * @param {number} rowIndex
  * @return {number[]}
@@ -34,4 +34,47 @@ var getRow = function(rowIndex) {
     }
     return results;
 };
+```
+
+## Java
+
+```java
+public class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> res = new ArrayList<Integer>();
+        List<Integer> tmp = new ArrayList<Integer>();
+        res.add(1);
+        tmp.add(1);
+        for (int i = 1; i <= rowIndex; i++) {
+            res.clear();
+            res.add(1);
+            for (int j = 1; j <= i; j++) {
+                if (j == i) {
+                    res.add(1);
+                    break;
+                }
+                res.add(tmp.get(j) + tmp.get(j - 1));
+            }
+            tmp.clear();
+            tmp.addAll(res);
+        }
+        return res;
+    }
+}
+```
+
+另一种方法：
+
+```java
+public List<Integer> getRow(int rowIndex) {
+	List<Integer> list = new ArrayList<Integer>();
+	if (rowIndex < 0) return list;
+	for (int i = 0; i < rowIndex + 1; i++) {
+		list.add(0, 1);
+		for (int j = 1; j < list.size() - 1; j++) {
+			list.set(j, list.get(j) + list.get(j + 1));
+		}
+	}
+	return list;
+}
 ```
