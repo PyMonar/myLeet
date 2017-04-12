@@ -20,7 +20,7 @@
 
 ## Javascript
 
-```
+```javascript
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -53,6 +53,34 @@ var treePath = function (root, path) {
 
     if (root.right !== null) {
         treePath(root.right, path + '->');
+    }
+}
+```
+
+## Java
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public List<String> res = new ArrayList<String>();
+    public List<String> binaryTreePaths(TreeNode root) {
+        if (root != null) findPath(root, "");
+        return res;
+    }
+    
+    public void findPath(TreeNode root, String preFix) {
+        preFix += root.val;
+        if (root.left == null && root.right == null) res.add(preFix);
+        if (root.left != null) findPath(root.left, preFix + "->");
+        if (root.right != null) findPath(root.right, preFix + "->");
     }
 }
 ```
