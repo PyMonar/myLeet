@@ -84,3 +84,33 @@ public class MyQueue {
  * boolean param_4 = obj.empty();
  */
 ```
+
+以上算法可以优化，每次pop的时候不必要再将所有元素返回main栈，保存在helper里边即可。
+
+```java
+class MyQueue {
+
+    Stack<Integer> input = new Stack();
+    Stack<Integer> output = new Stack();
+    
+    public void push(int x) {
+        input.push(x);
+    }
+
+    public void pop() {
+        peek();
+        output.pop();
+    }
+
+    public int peek() {
+        if (output.empty())
+            while (!input.empty())
+                output.push(input.pop());
+        return output.peek();
+    }
+
+    public boolean empty() {
+        return input.empty() && output.empty();
+    }
+}
+```
