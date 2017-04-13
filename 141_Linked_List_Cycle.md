@@ -10,7 +10,7 @@
 
 > 思路：设置两个指针，一个快指针一个慢指针，让两个指针同时移动，如果两个指针有相同指向的情况则存在环。
 
-```
+```javascript
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -39,4 +39,33 @@ var hasCycle = function(head) {
 
     return false;
 };
+```
+## Java
+
+```java
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) return false;
+        ListNode slow = head.next;
+        ListNode fast = slow.next;
+        while (fast != null) {
+            if (fast == slow) return true;
+            slow = slow.next;
+            if (fast.next == null) return false;
+            fast = fast.next.next;
+        }
+        return false;
+    }
+}
 ```
