@@ -16,7 +16,7 @@
 
 ## Javascript
 
-```
+```javascript
 /**
  * @param {number} n
  * @return {string}
@@ -47,4 +47,33 @@ var countAndSay = function(n) {
 
     return arr[n];
 };
+```
+
+## Java
+
+```java
+public class Solution {
+    public String countAndSay(int n) {
+        String res = "1", tmp;
+        int digit, count;
+        while (n > 1) {
+            tmp = res;
+            digit = tmp.charAt(0) - '0';
+            count = 1;
+            res = "";
+            for (int i = 1; i < tmp.length(); i++) {
+                if (tmp.charAt(i) != tmp.charAt(i - 1)) {
+                    res += count + "" + digit;
+                    digit = tmp.charAt(i) - '0';
+                    count = 1;
+                } else {
+                    count++;
+                }
+            }
+            res += count + "" + digit;
+            n--;
+        }
+        return res;
+    }
+}
 ```
