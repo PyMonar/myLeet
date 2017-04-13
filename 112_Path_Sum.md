@@ -23,7 +23,7 @@
 
 > 思路：递归解法。
 
-```
+```javascript
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -62,3 +62,44 @@ var findSum = function (root, total, sum) {
     }
 }
 ```
+
+## Java
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    private boolean flag = false;
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null) return false;
+        findPath(root, sum);
+        return flag;
+    }
+    
+    public void findPath(TreeNode root, int sum) {
+        if (root.left == null && root.right == null && sum == root.val) {
+            flag = true;
+            return;
+        }
+        if (root.left != null) findPath(root.left, sum - root.val);
+        if (root.right != null) findPath(root.right, sum - root.val);
+    }
+}
+
+// OR
+
+public class Solution {
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if(root == null) return false;
+        if(root.left == null && root.right == null && sum - root.val == 0) return true;
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+    }
+}
+``` 
