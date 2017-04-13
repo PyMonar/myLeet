@@ -16,7 +16,7 @@
 
 > 思路：hash判断是否重复，然后使用splice方法。
 
-```
+```javascript
 /**
  * @param {number[]} nums
  * @return {number}
@@ -32,5 +32,44 @@ var removeDuplicates = function(nums) {
         }
     }
     return nums.length;
+};
+```
+
+## Java
+
+解法： 双指针，一个指向已经去重的位置，一个指向下一个该出现的元素。
+
+```java
+public class Solution {
+    public int removeDuplicates(int[] nums) {
+        if (nums.length <= 1) return nums.length;
+        int i = 1, j = 1;
+        while (i < nums.length && j < nums.length) {
+            if (nums[i] <= nums[i - 1]) {
+                while (j < nums.length && nums[j] <= nums[i - 1]) j++;
+                if (j == nums.length) break;
+                nums[i] = nums[j];
+                i++;
+                j++;
+            } else {
+                i++;
+            }
+        }
+        return i;
+    }
+}
+```
+
+解法二：（这个更简单）
+
+```java
+public class Solution {
+    public int removeDuplicates(int A[], int n) {
+        if(n < 2) return n;
+        int id = 1;
+        for(int i = 1; i < n; ++i) 
+            if(A[i] != A[i-1]) A[id++] = A[i];
+        return id;
+    }
 };
 ```
