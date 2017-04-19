@@ -6,7 +6,7 @@
 
 {desc}
 
-## Java
+## Python
 
-```java
+```python
 ```
