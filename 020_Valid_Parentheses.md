@@ -12,7 +12,7 @@
 
 > 思路：括号匹配，用栈解决。
 
-```
+```javascript
 /**
  * @param {string} s
  * @return {boolean}
@@ -56,4 +56,25 @@ var isPair = function (cur, pre) {
         return false;
     }
 }
+```
+
+## Python
+
+```python
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        if s == None or len(s) == 0:
+            return True
+        stack = ['#']
+        for i in range(0, len(s)):
+            if (s[i] == ')' and stack[-1] == '(') or (s[i] == ']' and stack[-1] == '[') or (s[i] == '}' and stack[-1] == '{'):
+                stack.pop()
+            else:
+                stack.append(s[i])
+        return len(stack) == 1
+        
 ```
