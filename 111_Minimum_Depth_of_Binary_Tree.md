@@ -12,7 +12,7 @@
 
 > 思路：递归解法。
 
-```
+```javascript
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -50,4 +50,35 @@ var treeDept = function (root, deep) {
         treeDept(root.right, deep);  
     }
 }
+```
+
+## Python
+
+```python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def minDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if root == None:
+            return 0
+        self.depth = 2147483647
+        self.findDepth(root, 0)
+        return self.depth
+    
+    def findDepth(self, root, depth):
+        if root == None:
+            return
+        if root.left == None and root.right == None:
+            self.depth = min(depth + 1, self.depth)
+        self.findDepth(root.left, depth + 1)
+        self.findDepth(root.right, depth + 1)
 ```
