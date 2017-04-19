@@ -18,7 +18,8 @@
 ## Javascript
 
 > 思路：利用字典，先选择一个字符串存储每一个字符出现的位置，针对出现大于等于两次的字符记录下标，然后在另一个字符中验证这些下标是否相等。注意，本算法需要反过来再一次验证，然后合并结果。
-```
+
+```javascript
 /**
  * @param {string} s
  * @param {string} t
@@ -83,4 +84,31 @@ var isIsomorphic = function(s, t) {
 
     return flag1 && flag2;
 };
+```
+
+## Python
+
+```python
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        dic = {}
+        for i in range(len(s)):
+            if s[i] not in dic:
+                dic[s[i]] = ord(s[i]) - ord(t[i])
+            else:
+                if dic[s[i]] != ord(s[i]) - ord(t[i]):
+                    return False
+        dic.clear()
+        for i in range(len(t)):
+            if t[i] not in dic:
+                dic[t[i]] = ord(s[i]) - ord(t[i])
+            else:
+                if dic[t[i]] != ord(s[i]) - ord(t[i]):
+                    return False
+        return True
 ```
