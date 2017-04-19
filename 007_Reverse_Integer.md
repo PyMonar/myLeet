@@ -13,7 +13,7 @@
 
 > 思路：注意结果别溢出。
 
-```
+```javascript
 /**
  * @param {number} x
  * @return {number}

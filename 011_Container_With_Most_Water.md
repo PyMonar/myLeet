@@ -9,7 +9,7 @@
 ## Javascript
 
 
-```
+```javascript
 /**
  * @param {number[]} height
  * @return {number}

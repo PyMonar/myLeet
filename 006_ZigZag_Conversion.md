@@ -21,7 +21,7 @@ string convert(string text, int nRows);
 
 > 思路：思路有点复杂......
 
-```
+```javascript
 /**
  * @param {string} s
  * @param {number} numRows

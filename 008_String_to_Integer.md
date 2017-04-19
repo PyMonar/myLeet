@@ -10,7 +10,7 @@
 
 > 思路：注意溢出处理。
 
-```
+```javascript
 /**
  * @param {string} str
  * @return {number}

@@ -9,7 +9,7 @@
 
 ## Javascript
 
-```
+```javascript
 /**
  * @param {string} s
  * @return {string}

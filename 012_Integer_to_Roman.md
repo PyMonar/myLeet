@@ -10,7 +10,7 @@
 
 ## Javascript
 
-```
+```javascript
 /**
  * @param {number} num
  * @return {string}
